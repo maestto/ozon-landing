@@ -35,10 +35,20 @@ const features = [
   },
 ];
 
-function FeatureCard({ f }: { f: (typeof features)[0] }) {
+function FeatureCard({
+  f,
+  width,
+}: {
+  f: (typeof features)[0];
+  width?: number;
+}) {
+  const style = width ? { width, height: 144 } : { height: 144 };
   return (
-    <article className="flex items-center justify-between overflow-hidden rounded-2xl bg-white p-6">
-      <h3 className="max-w-[180px] text-2xl font-normal leading-tight text-[#272B51] lg:text-[32px]">
+    <article
+      className="flex items-center justify-between rounded-[16px] bg-white p-[32px]"
+      style={style}
+    >
+      <h3 className="max-w-[180px] text-[22px] font-normal leading-[1.1] text-[#272B51] sm:text-[26px] lg:text-[32px]">
         {f.title}
       </h3>
       <Image
@@ -52,75 +62,128 @@ function FeatureCard({ f }: { f: (typeof features)[0] }) {
   );
 }
 
+function IntegrationsBadge() {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#E0E2F0] bg-white px-[10px] py-[4px] text-[12px] font-medium leading-4 text-[#272B51]">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <circle cx="3" cy="3" r="2" fill="#ADB4DE" />
+        <circle cx="11" cy="3" r="2" fill="#ADB4DE" />
+        <circle cx="3" cy="11" r="2" fill="#ADB4DE" />
+        <circle cx="11" cy="11" r="2" fill="#ADB4DE" />
+      </svg>
+      Интеграции
+    </span>
+  );
+}
+
 export default function TelegramSection() {
   return (
-    <section className="bg-[#F7F7F7] py-16 lg:py-[115px]" id="telegram">
-      <div className="mx-auto max-w-[1280px] px-5 lg:px-0">
-        {/* Heading */}
-        <div className="mb-14">
-          <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-[#E0E2F0] bg-white px-3 py-1 text-xs font-medium text-[#272B51]">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <circle cx="3" cy="3" r="2" fill="#ADB4DE" />
-              <circle cx="11" cy="3" r="2" fill="#ADB4DE" />
-              <circle cx="7" cy="11" r="2" fill="#ADB4DE" />
-            </svg>
-            Интеграции
-          </span>
-          <h2 className="max-w-[700px] text-3xl font-medium leading-tight text-[#272B51] md:text-4xl lg:text-[48px] lg:leading-[1.1]">
-            Вся аналитика в Telegram — без входа в кабинет
+    <section className="relative overflow-hidden bg-[#F7F7F7] py-[80px] lg:py-0" id="telegram">
+      {/* Mobile/tablet layout */}
+      <div className="lg:hidden">
+        <div className="mx-auto max-w-[1280px] px-5">
+          <div className="mb-10 flex flex-col items-center text-center">
+            <IntegrationsBadge />
+            <h2 className="mt-[16px] max-w-[700px] text-[32px] font-medium leading-[1.08] text-[#272B51] md:text-[40px]">
+              Вся аналитика в Telegram — без входа в кабинет
+            </h2>
+            <p className="mt-[16px] text-[16px] text-[#545881]">
+              Получайте утренние отчёты, уведомления о низких остатках и
+              динамику продаж прямо в свой мессенджер.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {features.map((f) => (
+              <FeatureCard key={f.id} f={f} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop layout: absolute positioning matching Figma exactly */}
+      <div className="relative hidden h-[999px] w-full lg:block">
+        {/* Soft blue blob background shape */}
+        <div
+          className="pointer-events-none absolute"
+          style={{
+            left: "calc(50% - 720px + 236px)",
+            top: "97px",
+            width: 969,
+            height: 948,
+          }}
+          aria-hidden="true"
+        >
+          <div
+            className="h-full w-full"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 50%, #CDE1FF 0%, transparent 60%)",
+              borderRadius: "50%",
+            }}
+          />
+        </div>
+
+        {/* Heading area centered */}
+        <div className="absolute left-1/2 top-[64px] flex w-[820px] -translate-x-1/2 flex-col items-center text-center">
+          <IntegrationsBadge />
+          <h2 className="mt-[24px] whitespace-nowrap text-[48px] font-medium leading-[1.08] tracking-[-0.01em] text-[#272B51]">
+            Вся аналитика в Telegram —<br />
+            без входа в кабинет
           </h2>
-          <p className="mt-4 max-w-[700px] text-lg text-[#545881]">
-            Получайте утренние отчёты, уведомления о низких остатках и динамику
-            продаж прямо в свой мессенджер.
+          <p className="mt-[16px] text-[18px] font-normal leading-[1.33] text-[#545881]">
+            Получайте утренние отчёты, уведомления о низких остатках
+            <br />
+            и динамику продаж прямо в свой мессенджер.
           </p>
         </div>
 
-        {/* Desktop layout: left cards | phone | right cards */}
-        <div className="hidden lg:grid lg:grid-cols-[1fr_305px_1fr] lg:items-start lg:gap-8">
-          <div className="flex flex-col gap-4">
-            <FeatureCard f={features[0]} />
-            <FeatureCard f={features[1]} />
-          </div>
-
-          <div className="relative flex justify-center">
-            <Image
-              src="/assets/phone.png"
-              alt="Telegram-бот Маржинатора на экране смартфона"
-              width={305}
-              height={624}
-              className="relative z-10 object-contain"
-            />
-            <div className="absolute bottom-24 left-[-50px] z-20 w-[220px]">
-              <Image
-                src="/assets/minus30.png"
-                alt="Снижение расходов"
-                width={220}
-                height={232}
-                className="object-contain"
-              />
-            </div>
-            <div className="absolute right-[-50px] top-8 z-20 w-[240px]">
-              <Image
-                src="/assets/plus15.png"
-                alt="Рост прибыли"
-                width={240}
-                height={261}
-                className="object-contain"
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <FeatureCard f={features[2]} />
-            <FeatureCard f={features[3]} />
-          </div>
+        {/* Left cards */}
+        <div className="absolute" style={{ left: "calc(50% - 720px + 82px)", top: "311px" }}>
+          <FeatureCard f={features[0]} width={414} />
+        </div>
+        <div className="absolute" style={{ left: "calc(50% - 720px + 82px)", top: "471px" }}>
+          <FeatureCard f={features[1]} width={414} />
         </div>
 
-        {/* Mobile / tablet layout */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:hidden">
-          {features.map((f) => (
-            <FeatureCard key={f.id} f={f} />
-          ))}
+        {/* Right cards */}
+        <div className="absolute" style={{ left: "calc(50% - 720px + 946px)", top: "631px" }}>
+          <FeatureCard f={features[2]} width={414} />
+        </div>
+        <div className="absolute" style={{ left: "calc(50% - 720px + 946px)", top: "791px" }}>
+          <FeatureCard f={features[3]} width={414} />
+        </div>
+
+        {/* Phone mockup */}
+        <div className="absolute z-10" style={{ left: "calc(50% - 720px + 568px)", top: "311px" }}>
+          <Image
+            src="/assets/phone.png"
+            alt="Telegram-бот Маржинатора на экране смартфона"
+            width={305}
+            height={624}
+            className="object-contain"
+          />
+        </div>
+
+        {/* -30% floating tile (overlaps left of phone) */}
+        <div className="absolute z-20" style={{ left: "calc(50% - 720px + 224px)", top: "639px" }}>
+          <Image
+            src="/assets/minus30.png"
+            alt="Снижение расходов на 30%"
+            width={292}
+            height={307}
+            className="object-contain"
+          />
+        </div>
+
+        {/* +15% floating tile (overlaps right of phone) */}
+        <div className="absolute z-20" style={{ left: "calc(50% - 720px + 923px)", top: "258px" }}>
+          <Image
+            src="/assets/plus15.png"
+            alt="Рост прибыли на 15%"
+            width={326}
+            height={355}
+            className="object-contain"
+          />
         </div>
       </div>
     </section>

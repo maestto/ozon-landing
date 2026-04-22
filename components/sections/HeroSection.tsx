@@ -4,21 +4,21 @@ import Header from "@/components/Header";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full bg-[#001E58] overflow-hidden">
+    <section className="relative w-full overflow-hidden bg-[#001E58]">
       <Image
         src="/assets/hero-bg.png"
         alt=""
         fill
-        className="object-cover object-center opacity-60"
+        className="object-cover object-center opacity-80"
         priority
         aria-hidden="true"
       />
 
-      <div className="relative z-10">
+      <div className="relative z-10 flex min-h-[542px] flex-col">
         <Header />
 
-        <div className="mx-auto max-w-[1280px] px-5 pb-14 pt-12 lg:px-0 lg:pt-16 lg:pb-20">
-          <h1 className="max-w-[900px] text-[56px] font-medium leading-[1.08] tracking-tight text-white md:text-[72px] lg:text-[85px]">
+        <div className="mx-auto flex w-full max-w-[1280px] flex-1 flex-col items-center justify-center gap-10 px-5 pb-[60px] pt-[40px] text-center lg:px-0 lg:pt-[60px]">
+          <h1 className="text-[40px] font-medium uppercase leading-[1.05] tracking-[-0.01em] text-white sm:text-[60px] lg:text-[85px] lg:leading-[92px]">
             Реальная прибыль
             <br />
             по каждому
@@ -26,53 +26,47 @@ export default function HeroSection() {
             товару на OZON
           </h1>
 
-          <div className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+          <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-center sm:gap-10">
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-[10px]" aria-hidden="true">
+                <div className="h-10 w-10 rounded-full border-[2px] border-[#001E58] bg-[#DBD1FC]" />
+                <div className="h-10 w-10 rounded-full border-[2px] border-[#001E58] bg-[#FFC7D6]" />
+                <div className="h-10 w-10 rounded-full border-[2px] border-[#001E58] bg-[#131313]" />
+              </div>
+              <p className="text-left text-[14px] font-medium leading-[1.2] text-white">
+                +200
+                <br />
+                селлеров
+                <br />
+                уже с нами
+              </p>
+            </div>
+
             <Link
               href="/register"
-              className="group inline-flex h-[68px] items-center overflow-hidden rounded-full bg-[#001E58] border border-white/20 pr-2 pl-6 text-white hover:bg-[#002875] transition-colors"
+              className="group inline-flex h-[68px] items-center rounded-full border border-white/15 bg-[#001E58]/80 pl-[28px] pr-[6px] text-white backdrop-blur-sm transition-colors hover:bg-[#002875]"
             >
-              <span className="mr-4 text-base font-normal">
+              <span className="mr-4 text-[16px] font-normal">
                 Попробовать бесплатно
               </span>
-              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white">
+              <span className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-full bg-white">
                 <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 22 22"
                   fill="none"
                   aria-hidden="true"
                 >
                   <path
-                    d="M4 10h12M12 6l4 4-4 4"
+                    d="M4 11h14M13 6l5 5-5 5"
                     stroke="#001E58"
-                    strokeWidth="1.5"
+                    strokeWidth="1.6"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                 </svg>
               </span>
             </Link>
-          </div>
-
-          <div className="mt-8 flex items-center gap-3">
-            <div className="flex -space-x-2.5" aria-hidden="true">
-              <div className="h-10 w-10 rounded-full bg-[#DBD1FC] border-2 border-[#001E58] flex items-center justify-center text-xs font-medium text-[#272B51]">
-                А
-              </div>
-              <div className="h-10 w-10 rounded-full bg-[#FFC7D6] border-2 border-[#001E58] flex items-center justify-center text-xs font-medium text-[#272B51]">
-                Б
-              </div>
-              <div className="h-10 w-10 rounded-full bg-[#131313] border-2 border-[#001E58] flex items-center justify-center text-xs font-medium text-white">
-                В
-              </div>
-            </div>
-            <p className="text-sm font-medium leading-tight text-white">
-              +200
-              <br />
-              селлеров
-              <br />
-              уже с нами
-            </p>
           </div>
         </div>
       </div>

@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# visual review (large binary screenshots, local only)
+/visual-review/screenshots
+/visual-review/diffs
+/visual-review/figma
+
