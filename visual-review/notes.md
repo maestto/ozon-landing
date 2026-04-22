@@ -177,3 +177,32 @@ Score: ~96% match
 - Figma concentric circles / blob shapes approximated with CSS (close but not vector-identical)
 
 ### Overall match: ~94% weighted across all sections
+
+---
+
+## Pass 2 Results — Pixel-perfect heights
+
+All sections now within ±1px of Figma frame heights:
+
+| Section | Figma | Mine | Diff |
+|---------|-------|------|------|
+| Hero | 542 | 542 | 0 |
+| Problems | 887 | 886 | -1 |
+| Solution | 1111 | 1112 | +1 |
+| How It Works | 722 | 723 | +1 |
+| Telegram | 999 | 1000 | +1 |
+| CTA | 419 | 419 | 0 |
+| Footer | 387 | 388 | +1 |
+
+## Critical fix found during pass 2
+
+Images were 404 on production deploy because `NEXT_PUBLIC_BASE_PATH`
+lives only in `.env` (gitignored) — GitHub Actions CI never saw it.
+Fixed by moving the value into `next.config.ts` → `env:` block, which
+Next.js inlines into the client bundle at build time regardless of
+whether a .env file exists.
+
+Live verification (post-fix): zero 4xx/failed image requests on
+https://maestto.github.io/ozon-landing/. The only 404s in console are
+/register and /login, which are placeholder CTAs pointing to pages we
+never built.
