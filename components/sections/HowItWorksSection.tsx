@@ -29,9 +29,9 @@ function StepCard({
   description: string;
 }) {
   return (
-    <div className="flex min-h-[116px] items-center gap-[20px] rounded-[16px] bg-white px-[24px] py-[20px] md:gap-[32px] md:px-[40px]">
+    <div className="flex min-h-[116px] items-center gap-[20px] rounded-[16px] bg-white px-[24px] py-[16px] md:gap-[32px] md:px-[40px] lg:h-[116px] lg:min-h-0 lg:py-0">
       <span
-        className="select-none text-[72px] font-bold leading-none text-[#001E58] md:text-[96px]"
+        className="select-none text-[72px] font-bold leading-[0.9] text-[#001E58] md:text-[96px]"
         aria-hidden="true"
       >
         {number}

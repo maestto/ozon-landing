@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function CtaSection() {
   return (
     <section
-      className="bg-[#F7F7F7] py-[80px] lg:py-[80px]"
+      className="bg-[#F7F7F7] py-[54px] lg:py-[54px]"
       id="cta"
     >
       <div className="mx-auto max-w-[1280px] px-5 lg:px-0">

@@ -17,7 +17,7 @@ export default function HeroSection() {
       <div className="relative z-10 flex min-h-[542px] flex-col">
         <Header />
 
-        <div className="mx-auto flex w-full max-w-[1280px] flex-1 flex-col items-center justify-center gap-10 px-5 pb-[60px] pt-[40px] text-center lg:px-0 lg:pt-[60px]">
+        <div className="mx-auto flex w-full max-w-[1280px] flex-1 flex-col items-center justify-center gap-6 px-5 pb-[40px] pt-[32px] text-center lg:px-0 lg:gap-8 lg:pt-[40px] lg:pb-[48px]">
           <h1 className="text-[40px] font-medium uppercase leading-[1.05] tracking-[-0.01em] text-white sm:text-[60px] lg:text-[85px] lg:leading-[92px]">
             Реальная прибыль
             <br />

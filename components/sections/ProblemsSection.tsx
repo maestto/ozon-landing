@@ -72,7 +72,7 @@ function CardIcon({
 export default function ProblemsSection() {
   return (
     <section
-      className="relative overflow-hidden bg-[#F7F7F7] py-[80px] lg:py-[115px]"
+      className="relative overflow-hidden bg-[#F7F7F7] pb-[64px] pt-[64px] lg:pb-0 lg:pt-[64px]"
       id="problems"
     >
       {/* Decorative dot pattern */}
@@ -88,17 +88,17 @@ export default function ProblemsSection() {
 
       <div className="relative mx-auto max-w-[1280px] px-5 lg:px-0">
         {/* Heading block centered */}
-        <div className="mb-[48px] flex flex-col items-center text-center">
+        <div className="mb-[48px] flex flex-col items-center text-center lg:mb-[96px]">
           <ProblemBadge />
-          <h2 className="mt-[16px] max-w-[700px] text-[32px] font-medium leading-[1.08] text-[#272B51] md:text-[40px] lg:text-[48px]">
+          <h2 className="mt-[24px] max-w-[700px] text-[32px] font-medium leading-[1.04] text-[#272B51] md:text-[40px] lg:text-[48px]">
             Вы не знаете, сколько реально зарабатываете
           </h2>
-          <p className="mt-[16px] text-[18px] font-normal leading-[1.33] text-[#545881]">
+          <p className="mt-[16px] text-[16px] font-normal leading-[1.33] text-[#545881] lg:text-[18px]">
             Основные проблемы селлеров, которые мы решаем
           </p>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-4 lg:grid-cols-3 lg:auto-rows-[260px]">
           <article className="relative overflow-hidden rounded-[16px] bg-white p-[32px] lg:col-span-2">
             <CardIcon variant="revenue" tone="light" />
             <h3 className="mt-[24px] text-[20px] font-bold leading-[1.2] text-[#272B51] lg:text-[24px]">
