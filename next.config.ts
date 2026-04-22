@@ -1,9 +1,14 @@
 import type { NextConfig } from "next";
 
+const basePath = "/ozon-landing";
+
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/ozon-landing",
-  assetPrefix: "/ozon-landing",
+  basePath,
+  assetPrefix: basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     unoptimized: true,
   },
